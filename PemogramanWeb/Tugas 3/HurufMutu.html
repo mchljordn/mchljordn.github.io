@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Huruf Mutu</title>
+    <script>
+        function hitung(){
+            var nilai = parseFloat(document.getElementById("nilai").value);
+            if (isNaN(nilai)){
+                alert("Masukkan bilangan dengan benar");
+                return
+            } else if (nilai < 0 || nilai > 100){
+                alert("Masukkan bilangan 0-100");
+                return;
+            }
+
+            let hurufMutu;
+
+            if (nilai >= 0 && nilai <= 40) {
+                hurufMutu = 'E';
+            } else if (nilai >= 41 && nilai <= 55){
+                hurufMutu = 'D';
+            } else if (nilai >= 56 && nilai <= 60){
+                hurufMutu = 'C';
+            } else if (nilai >= 61 && nilai <= 65){
+                hurufMutu = 'BC';
+            } else if (nilai >= 66 && nilai <= 70){
+                hurufMutu = 'B';
+            } else if (nilai >= 71 && nilai <= 80){
+                hurufMutu = 'AB';
+            } else if (nilai >= 81 && nilai <= 100){
+                hurufMutu = 'A';
+            }
+
+            document.getElementById("hasil").textContent = "Huruf Mutu = " + hurufMutu;
+        }
+    </script>
+</head>
+<body>
+    <h1>Huruf Mutu</h1>
+        <form onsubmit="event.preventDefault(); hitung();" autocomplete="off">
+            <label for="nilai">Nilai: </label>
+            <input type="text" name="nilai" id="nilai" autocomplete="off">
+            <input type="submit" value="Hitung">
+        </form>
+
+        <h2 id="hasil"></h2>
+</body>
+</html>
