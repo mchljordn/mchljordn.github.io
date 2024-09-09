@@ -1,0 +1,74 @@
+<!---
+    Nama    : Michael Jordan Alfanius Sianipar
+    140810230060
+--->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Sederhana</title>
+    <script>
+        function hitung() {
+            var bil1 = parseFloat(document.getElementById("bilangan1").value);
+            var bil2 = parseFloat(document.getElementById("bilangan2").value);
+            var operasi = document.querySelector('input[name="operasi"]:checked');
+            
+            if (isNaN(bil1) || isNaN(bil2)) {
+                alert("Masukkan kedua bilangan dengan benar.");
+                return;
+            }
+            if (!operasi) {
+                alert("Pilih operasi matematika.");
+                return;
+            }
+
+            var hasil;
+
+            if (operasi.id === "tambah") {
+                hasil = bil1 + bil2;
+            } else if (operasi.id === "kurang") {
+                hasil = bil1 - bil2;
+            } else if (operasi.id === "kali") {
+                hasil = bil1 * bil2;
+            } else if (operasi.id === "bagi") {
+                if (bil2 === 0) {
+                    alert("Tidak bisa membagi dengan 0.");
+                    return;
+                }
+                hasil = bil1 / bil2;
+            }
+
+            document.getElementById("hasil").textContent = "Hasil: " + hasil;
+        }
+    </script>
+</head>
+<body>
+    <h1>Kalkulator Sederhana</h1>
+    <h2>Masukkan angka:</h2>
+    <form onsubmit="event.preventDefault(); hitung();" autocomplete="off">
+        <label for="bilangan1">Bilangan 1 = </label>
+        <input type="text" name="bilangan1" id="bilangan1" autocomplete="off"><br>
+        
+        <label for="bilangan2">Bilangan 2 = </label>
+        <input type="text" name="bilangan2" id="bilangan2" autocomplete="off"><br><br>
+
+        <input type="radio" name="operasi" id="tambah" value="tambah">
+        <label for="tambah"> + </label>
+        
+        <input type="radio" name="operasi" id="kurang" value="kurang">
+        <label for="kurang"> - </label>
+        
+        <input type="radio" name="operasi" id="kali" value="kali">
+        <label for="kali"> * </label>
+        
+        <input type="radio" name="operasi" id="bagi" value="bagi">
+        <label for="bagi"> / </label><br><br>
+
+        <input type="submit" value="Hitung">
+    </form>
+
+    <h2 id="hasil">Hasil: </h2>
+</body>
+</html>
